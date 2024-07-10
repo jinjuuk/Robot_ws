@@ -2,25 +2,30 @@ import json
 import os
 
 def convert_txt_to_coco(txt_folder, image_folder, output_json, categories):
+    # Create the output directory if it does not exist
+    output_dir = os.path.dirname(output_json)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
     coco_format = {
         "images": [],
         "annotations": [],
         "categories": []
     }
 
-    category_mapping = {cat_id: cat_name for cat_id, cat_name in enumerate(categories, 1)}
+    category_mapping = {i: name for i, name in enumerate(categories, 1)}
 
-    for cat_id, cat_name in category_mapping.items():
+    for i, name in category_mapping.items():
         coco_format["categories"].append({
-            "id": cat_id,
-            "name": cat_name
+            "id": i,
+            "name": name
         })
 
     annotation_id = 1
 
     for txt_file in os.listdir(txt_folder):
         if txt_file.endswith('.txt'):
-            image_id = int(os.path.splitext(txt_file)[0])
+            image_id = os.path.splitext(txt_file)[0]  # Use the filename without extension as the image ID
             image_path = os.path.join(image_folder, f"{image_id}.jpg")
             
             # Verify that the image exists
@@ -43,11 +48,11 @@ def convert_txt_to_coco(txt_folder, image_folder, output_json, categories):
 
                 for line in lines:
                     parts = line.strip().split()
-                    class_id = int(parts[1]) + 1  # Assuming class_id starts from 0 in txt, adjust as needed
-                    x_center = float(parts[2]) * width
-                    y_center = float(parts[3]) * height
-                    bbox_width = float(parts[4]) * width
-                    bbox_height = float(parts[5]) * height
+                    class_id = int(parts[0]) + 1  # Assuming class_id starts from 0 in txt, adjust as needed
+                    x_center = float(parts[1]) * width
+                    y_center = float(parts[2]) * height
+                    bbox_width = float(parts[3]) * width
+                    bbox_height = float(parts[4]) * height
 
                     x_min = x_center - bbox_width / 2
                     y_min = y_center - bbox_height / 2
@@ -67,5 +72,5 @@ def convert_txt_to_coco(txt_folder, image_folder, output_json, categories):
         json.dump(coco_format, json_file, indent=4)
 
 # Example usage
-categories = ["bolong", "normal", "remuk"]  # List your categories here
-convert_txt_to_coco('/path/to/txt/annotations', '/path/to/images', '/path/to/output/annotations.json', categories)
+categories = ["dog", "person", "cat", "tv", "car", "meatballs", "marinara sauce", "tomato soup", "chicken noodle soup", "french onion soup", "chicken breast", "ribs", "pulled pork", "hamburger", "cavity", "cup", "star"]  # List your categories here
+convert_txt_to_coco('/home/jinjuuk/Downloads/cs_dataset/labels', '/home/jinjuuk/Downloads/cs_dataset/images', '/home/jinjuuk/Downloads/cs_dataset/annotations/instances_train.json', categories)
