@@ -3,7 +3,7 @@ import numpy as np
 from ultralytics import YOLO
 
 # Load the trained weights file
-model = YOLO("/home/jinjuuk/dev_ws/pt_files/custom_freeze8_med.pt")
+model = YOLO("/home/jinjuuk/dev_ws/pt_files/new_custom_m.pt")
 
 # Open the camera
 cap = cv2.VideoCapture(0)  # Usually 0
@@ -17,8 +17,8 @@ if not cap.isOpened():
     exit()
 
 # Initialize thresholds
-confidence_threshold = 30  # Initial confidence threshold (in percent)
-iou_threshold = 30  # Initial IoU threshold (in percent)
+confidence_threshold = 40  # Initial confidence threshold (in percent)
+iou_threshold = 50  # Initial IoU threshold (in percent)
 
 # Callback function for trackbars
 def nothing(x):
