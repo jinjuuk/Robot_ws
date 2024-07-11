@@ -3,7 +3,7 @@ import numpy as np
 from ultralytics import YOLO
 
 # Load the trained weights file
-model = YOLO("/home/jinjuuk/dev_ws/pt_files/custom_freeze10.pt")
+model = YOLO("/home/jinjuuk/dev_ws/pt_files/custom_freeze8_med.pt")
 
 # Open the camera
 cap = cv2.VideoCapture(0)  # Usually 0
