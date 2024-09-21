@@ -5,35 +5,14 @@ import time
 import os
 
 
- 
-# 캡처한 이미지를 저장할 경로 설정
 
-save_path = "captured_images"
+# 캡처한 이미지를 저장할 경로를 사용자로부터 입력받기
+
+save_path = input("/home/Downloads/newjeans_data")
 
 if not os.path.exists(save_path):
 
     os.makedirs(save_path)
-
-
-# Function to find the correct camera index
-def find_camera_index():
-    index = 0
-    arr = []
-    i = 10
-    while i > 0:
-        cap = cv2.VideoCapture(index)
-        if cap.read()[0]:
-            arr.append(index)
-            cap.release()
-        index += 1
-        i -= 1
-    return arr
-
-# Print available camera indices
-print("Available camera indices: ", find_camera_index())
-
-
-
 
 
 
@@ -49,7 +28,7 @@ if not cap.isOpened():
 
 
 
-capture_interval = 2  # 캡처 간격 (초)
+capture_interval = 1.1  # 캡처 간격 (초)
 
 start_time = time.time()
 

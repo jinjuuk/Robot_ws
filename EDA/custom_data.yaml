@@ -2,6 +2,5 @@ names: ['cup', 'star']
 nc: 2
 
 
-test: /content/drive/MyDrive/plastic_cup/inha_1/test/images
-train: /content/drive/MyDrive/plastic_cup/inha_1/train/images
-val: /content/drive/MyDrive/plastic_cup/inha_1/valid/images 
+train: /content/drive/MyDrive/custom_yolo/custom_data_combine/waste_combine/train/images
+val: /content/drive/MyDrive/custom_yolo/custom_data_combine/waste_combine/validation/images

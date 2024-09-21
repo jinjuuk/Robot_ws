@@ -126,6 +126,7 @@ cleanup_detection_enabled = False
 
 # 실시간 비디오 스트림을 처리하면서 트랙바를 통해 조절된 다양한 파라미터를 사용하여 이미지 처리를 수행하는 부분
 # 비디오 프레임 캡처
+#이구조는 외우는게 좋음, 비디오 실행 코드
 while True:
     ret, frame = cap.read()
     if not ret:
@@ -311,6 +312,7 @@ while True:
     results = model(yolo_roi) # YOLOv8 모델을 사용하여 객체 검출, 
 
     for result in results: # results 변수에는 검출된 여러 객체의 정보가 포함
+        
         boxes = result.boxes # 각 result에 대해 객체의 boxes를 가져옴
 
         for box in boxes: # boxes에는 검출된 각 객체의 경계 상자 정보가 포함
@@ -338,7 +340,7 @@ while True:
                 if label == 'cup' or label == 'star':
                     cv2.putText(frame, 'Trash Detected', (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2) # Trash Detected'라는 텍스트를 경고 메시지로 표시
 
-    
+
 
     # Draw ROI rectangles
     cv2.rectangle(frame, (roi_x_large, roi_y_large), (roi_x_large + roi_width_large, roi_y_large + roi_height_large), (255, 0, 0), 2)
@@ -360,3 +362,5 @@ while True:
 cap.release()
 
 cv2.destroyAllWindows()
+
+
