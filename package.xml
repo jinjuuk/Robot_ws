@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>test_pkg</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jinjuuk2@gmail.com">jinjuuk</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_python</buildtool_depend>
+  
+  <exec_depend>rclpy</exec_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>torch</exec_depend>
+  <exec_depend>opencv-python</exec_depend>
+  <exec_depend>numpy</exec_depend>
+  <exec_depend>python3-pil</exec_depend> <!-- Pillow -->
+  <exec_depend>ultralytics</exec_depend>
+  <exec_depend>torchvision</exec_depend> <!-- 선택 사항 -->
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
